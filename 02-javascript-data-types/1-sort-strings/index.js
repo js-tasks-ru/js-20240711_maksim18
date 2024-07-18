@@ -5,22 +5,14 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-    `use strict`
-
     const arrayCopy = [...arr];
 
-    const doAscendingComparison = (string1, string2) => string1.localeCompare(string2, `ru`, {
+    const sortingDirection = param === `desc`? -1: 1;
+
+    const doSorting = (string1, string2) => sortingDirection * string1.localeCompare(string2, `ru`, {
         caseFirst: `upper`,
         sensitivity: `variant`
     });
 
-    // const doAscendingComparison = (string1, string2) => new Intl.Collator([`ru`], {
-    //     caseFirst: `upper`,
-    //     sensitivity: `variant`
-    // }).compare(string1, string2);
-
-
-    const doDescendingComparison = (string1, string2) => -doAscendingComparison(string1, string2);
-
-    return param === `desc` ? arrayCopy.sort(doDescendingComparison) : arrayCopy.sort(doAscendingComparison);
+    return arrayCopy.sort(doSorting);
 }
