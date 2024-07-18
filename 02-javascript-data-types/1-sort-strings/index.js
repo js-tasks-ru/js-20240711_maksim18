@@ -9,12 +9,18 @@ export function sortStrings(arr, param = 'asc') {
 
     const arrayCopy = [...arr];
 
-    const doAscendingComparison = (string1, string2) => string1.localeCompare(string2, undefined, {
+    const doAscendingComparison = (string1, string2) => string1.localeCompare(string2, `ru`, {
         caseFirst: `upper`,
         sensitivity: `variant`
     });
 
+    // const doAscendingComparison = (string1, string2) => new Intl.Collator([`ru`], {
+    //     caseFirst: `upper`,
+    //     sensitivity: `variant`
+    // }).compare(string1, string2);
+
+
     const doDescendingComparison = (string1, string2) => -doAscendingComparison(string1, string2);
 
-    return param === `desc` ?  arrayCopy.sort(doDescendingComparison) : arrayCopy.sort(doAscendingComparison);
+    return param === `desc` ? arrayCopy.sort(doDescendingComparison) : arrayCopy.sort(doAscendingComparison);
 }
