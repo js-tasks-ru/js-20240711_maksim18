@@ -10,12 +10,12 @@ export function createGetter(path) {
         obj ??= {};
 
         for (const pathPart of pathParts) {
-            if(!Object.hasOwnProperty.call(obj, pathPart)){
+            if (!Object.hasOwnProperty.call(obj, pathPart)) {
                 return undefined;
             }
 
             if (!obj[pathPart]) {
-                return obj[pathPart] === null? null: undefined;
+                return obj[pathPart] === null ? null : undefined;
             }
 
             obj = obj[pathPart];
