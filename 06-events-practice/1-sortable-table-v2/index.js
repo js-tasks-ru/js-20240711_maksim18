@@ -1,7 +1,5 @@
 import { default as SortableTableV1 } from "../../05-dom-document-loading/2-sortable-table-v1/index.js";
 
-// I think the test named "should sort "desc" correctly for "sortType" equal number" is incorrect.
-// Initial sorting is made by "title" id but a pointdown event is happend only once.
 export default class SortableTable extends SortableTableV1 {
   #header;
   #headerConfig;
@@ -53,8 +51,7 @@ export default class SortableTable extends SortableTableV1 {
     }
 
     const sortingId = headerCellElement.dataset.id;
-    let sortOrder = headerCellElement.dataset.order;
-    sortOrder = !sortOrder || sortOrder === `desc` ? `asc` : `desc`;
+    const sortOrder = headerCellElement.dataset.order === `desc` ? `asc` : `desc`;
     this.#updateTable(sortingId, sortOrder);
   }
 

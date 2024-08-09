@@ -41,7 +41,6 @@ class Tooltip {
       return;
     }
 
-    //this.#element.style.position = `ab`;
     this.#element.style.left = `${x + 10}px`;
     this.#element.style.top = `${y + 10}px`;
   }
@@ -86,8 +85,6 @@ class Tooltip {
     document.body.removeEventListener(`pointermove`, this.#pointerMoveListener);
     document.body.removeEventListener(`pointerout`, this.#pointerOutListener);
   }
-
-
 
 
 
